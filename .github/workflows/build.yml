@@ -1,0 +1,30 @@
+name: Build Go Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.4'
+
+      - name: Verify Go Version
+        run: go version
+
+      - name: Download Dependencies
+        run: go mod tidy
+
+      - name: Build Application
+        run: go build -o helloapi .
