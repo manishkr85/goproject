@@ -28,3 +28,8 @@ jobs:
 
       - name: Build Application
         run: go build -o helloapi .
+
+      - name: Build Docker Image
+        run: docker build -t helloapi .
+        
+        
